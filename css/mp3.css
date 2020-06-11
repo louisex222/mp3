@@ -1,0 +1,162 @@
+*{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: 微軟正黑體;
+}
+
+#wrap{
+    max-width: 1200px;
+    height: 628px;
+    background: #D0D0D0 0% 0% no-repeat padding-box;
+    margin: 100px auto  0;
+    border-radius: 10px;
+}
+.container{
+    display: flex;
+    padding: 0 59px;
+}
+.musiclist{
+    transform: translateY(137px);
+    width: 169px;
+    height: 277px;
+    background: rgb(255, 248, 248,0.16) 0% 0% no-repeat padding-box;
+    box-shadow: 5px 5px 6px #00000029;
+    padding: 7px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+.musiclist h3{
+    width: 100%;
+    text-align: center;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    color: #666;
+    font-size: 15px;
+    font-weight: 900;
+}
+.musiclist li{
+    margin: 5px 0 ;
+    overflow: hidden;
+    display: flex;
+}
+.musiclist li div{
+    font-size: 13px;
+    font-weight: 900;
+    font-size: 12px;
+    font-weight: 900;
+    opacity: 0.8;
+    white-space: nowrap;
+    height: 17px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: 0.5s ease-in;
+}
+.musiclist li:hover {
+    color: #e69494;
+    border-bottom: 1px solid #e69494;
+    font-weight: 900;
+}
+.musiclist li.active{
+    color: #e69494;
+    border-bottom: 1px solid #e69494;
+    font-weight: 900;
+}
+.pic{
+    width: 100%;  
+   position: relative;
+   cursor: grabbing;
+   overflow-y: hidden;
+   overflow-x:hidden ;
+   height: 100%;
+   white-space: nowrap;
+   
+}
+.pic img{
+    width: 276px;
+    height: 415px;
+    transform: scale(0.8);
+    box-shadow: 5px 5px 6px #453C45;
+    border-radius: 1px;
+    margin-top: 50px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 10;
+    transition: 0.5s ease-in-out;
+}
+
+.pic img:hover{
+    transform: scale(1) ;
+}
+.playbtn{
+    text-align: center;
+     
+}
+
+.progress{
+    height: 8.4px;
+    cursor: pointer;
+    background: rgba(255,255,255,1);
+    border-radius: 50px;
+    border: 0.2px solid rgba(1, 1, 1, 0);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 730px;
+    position: relative;
+}
+.progressBar{
+    position: absolute;          
+    height: 10.4px;
+    border-radius: 50px;
+    background: #e69494;
+    margin: -1px -1px;
+    
+}
+.progress span{
+    position: absolute;
+    right: -40px;
+    top: -8px;
+    color: #e69494;
+    font-weight: 900; 
+    
+}
+.playbtn > div{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.playbtn button{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: #984F4F;
+    margin: 0px 5px 0 5px;
+    outline: none;
+    cursor: pointer;
+}
+.playbtn button i{
+    color: #e69494;
+    font-size: 18px;
+
+}
+.playbtn .fa-undo{
+    color: #984f4f;
+   padding-left:10px ;
+   cursor: pointer;
+}
+
+.gain:after{
+    content: '';
+    display: inline-block;
+    height: 50px;
+    width: 1px;
+}
+.gain div{
+    display: inline-block;
+    width: 3px;
+    background-color: #e69494;
+    margin:  0 0 0 1px ;
+    vertical-align: bottom;
+}
