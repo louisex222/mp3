@@ -101,7 +101,7 @@ let listBtn = document.querySelectorAll('li span')
 function listPlay(){
     audios.forEach((value,i)=>{
         if(this.innerText == value){
-            audio.src = `/sounds/${value}`
+            audio.src = `sounds/${value}`
             if(listChild[i].className==''){
                 listChild[i].classList.add('active')
             }
@@ -174,7 +174,7 @@ drag.addEventListener('mouseup',function(){
 function imgPlay(){
     audios.forEach((value,i)=>{
         if(this.id == i){
-            audio.src = `/sounds/${value}`
+            audio.src = `sounds/${value}`
         }
         audio.play()
         
@@ -185,7 +185,7 @@ imgs.forEach(img=>img.addEventListener('dblclick',imgPlay))
 
 audios.forEach((value,i,arr)=>{
     if(listBtn[0].innerText == value){
-        audio.src = `/sounds/${value}`
+        audio.src = `sounds/${value}`
         listChild[i].classList.add('active')
             
     }
