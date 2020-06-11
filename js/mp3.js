@@ -66,7 +66,7 @@ function prevAudio(){
     if(index< 0){
         index = audios.length-1
     }
-    audio.src = `/sounds/${audios[index]}` 
+    audio.src = `sounds/${audios[index]}` 
     audio.play()
 }
 
@@ -76,7 +76,7 @@ function nextAudio(){
     if(index > audios.length-1){
         index = 0
     }
-    audio.src = `/sounds/${audios[index]}`
+    audio.src = `sounds/${audios[index]}`
     audio.play()
 }
 next.addEventListener('click',nextAudio)
