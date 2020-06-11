@@ -10,11 +10,11 @@ let next = playbtn.querySelector('.fa-angle-double-right')
 let list = document.querySelector('.musiclist ul')
 
 let audios = [
-    'Justin Bieber - That Should Be Me.mp4',
-    'G-Eazy & Kehlani - Good Life.mp4',
-    'twice-more-more.mp3',
-    'digimon-adventure.mp4',
-    'catch-you-catch-me.mp4'
+    'digimon-adventure2020.mp3',
+    'good-time.mp3',
+    'kehlani-g-eazy-good-life.mp3',
+    'op1catch-you-catch-me.mp3',
+    'twice-more-more-mv.mp3'
     ]
 btn.onclick=function(e){
     if(audio.paused){
