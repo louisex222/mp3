@@ -198,13 +198,18 @@ drag.addEventListener('mouseup',function(){
     clicked = false
 })
 function imgPlay(){
+     
     audios.forEach((value,i)=>{
         if(this.id == i){
-            audio.src = `sounds/${value}`
-        }
-        audio.play()
-        
+            if(listChild[i].className==''){
+                listChild[i].classList.add('active')
+            }
+        }else if( this.id !=i){
+            listChild[i].classList.remove('active')
+        }  
     })
+    audio.src = `sounds/${audios[this.id]}`
+    audio.play()
 }
 imgs.forEach(img=>img.addEventListener('dblclick',imgPlay))
 
