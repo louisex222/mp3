@@ -120,7 +120,7 @@ function prevAudio(){
     audio.play()
     console.log(index)
 }
-
+// 上一首
 prev.addEventListener('click',prevAudio)
 function nextAudio(){
     index++
@@ -141,7 +141,64 @@ function nextAudio(){
     audio.play()
     console.log(index)
 }
+// 下一首
 next.addEventListener('click',nextAudio)
+
+let drag = document.querySelector('.pic')
+let imgs =  drag.querySelectorAll('img')
+let clicked = false
+let scrollmove
+let beginX
+function dragDown(e){
+    clicked =true
+    beginX = e.pageX-drag.offsetLeft
+    scrollmove = drag.scrollLeft
+    console.log(scrollmove)
+}
+function dragMove(e){
+    if(!clicked)return
+    let lastX = e.pageX-drag.offsetLeft
+    let move = lastX-beginX
+    drag.scrollLeft = scrollmove-move
+    console.log(beginX,lastX,move,scrollmove,drag.scrollLeft)
+    
+}
+drag.addEventListener('mousemove',dragMove)
+drag.addEventListener('mousedown',dragDown)
+drag.addEventListener('mouseleave',function(){
+    clicked = false
+})
+drag.addEventListener('mouseup',function(){
+    clicked = false
+})
+// 圖片播放
+function imgPlay(){
+    
+    audios.forEach((value,i)=>{
+        if(this.id == i){
+            if(listChild[i].className==''){
+                listChild[i].classList.add('active')
+            }
+        }else if( this.id !=i){
+            listChild[i].classList.remove('active')
+        }  
+    })
+    audio.src = `sounds/${audios[this.id]}`
+    audio.play()
+}
+imgs.forEach(img=>img.addEventListener('dblclick',imgPlay))
+
+
+audios.forEach((value,i,arr)=>{
+    if(listBtn[0].innerText == value){
+        audio.src = `sounds/${value}`
+        listChild[i].classList.add('active')
+        
+    }
+    
+    
+})
+audio.play()
 // 音波
 let gain = document.querySelector('.gain')
 for(let i =0 ;i< 128; i++){
@@ -169,58 +226,3 @@ processor.onaudioprocess =function(e){
            gains[j].style.height = output[j*32]*50+'px';
     }
 }
-
-let drag = document.querySelector('.pic')
-let imgs =  drag.querySelectorAll('img')
-let clicked = false
-let scrollmove
-let beginX
-function dragDown(e){
-   clicked =true
-   beginX = e.pageX-drag.offsetLeft
-   scrollmove = drag.scrollLeft
-   console.log(scrollmove)
-}
-function dragMove(e){
-    if(!clicked)return
-        let lastX = e.pageX-drag.offsetLeft
-        let move = lastX-beginX
-        drag.scrollLeft = scrollmove-move
-        console.log(beginX,lastX,move,scrollmove,drag.scrollLeft)
-    
-}
-drag.addEventListener('mousemove',dragMove)
-drag.addEventListener('mousedown',dragDown)
-drag.addEventListener('mouseleave',function(){
-    clicked = false
-})
-drag.addEventListener('mouseup',function(){
-    clicked = false
-})
-function imgPlay(){
-     
-    audios.forEach((value,i)=>{
-        if(this.id == i){
-            if(listChild[i].className==''){
-                listChild[i].classList.add('active')
-            }
-        }else if( this.id !=i){
-            listChild[i].classList.remove('active')
-        }  
-    })
-    audio.src = `sounds/${audios[this.id]}`
-    audio.play()
-}
-imgs.forEach(img=>img.addEventListener('dblclick',imgPlay))
-
-
-audios.forEach((value,i,arr)=>{
-    if(listBtn[0].innerText == value){
-        audio.src = `sounds/${value}`
-        listChild[i].classList.add('active')
-            
-    }
-    
-    
-})
-audio.play()
