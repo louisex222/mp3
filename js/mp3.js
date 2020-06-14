@@ -114,8 +114,9 @@ function prevAudio(){
             listChild[i].classList.remove('active')
         }
         
-        audio.src=`sounds/${value}`
+        
     })
+    audio.src=`sounds/${audios[index]}`
     audio.play()
     console.log(index)
 }
@@ -135,8 +136,8 @@ function nextAudio(){
             listChild[i].classList.remove('active')
         }
         
-        audio.src=`sounds/${value}`
     })
+    audio.src=`sounds/${audios[index]}`
     audio.play()
     console.log(index)
 }
