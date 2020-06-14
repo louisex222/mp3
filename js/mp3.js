@@ -114,8 +114,8 @@ function prevAudio(){
             listChild[i].classList.remove('active')
         }
         
+        audio.src=`sounds/${value}`
     })
-    audio.src=`sounds/${value}`
     audio.play()
     console.log(index)
 }
