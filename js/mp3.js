@@ -61,31 +61,13 @@ function loopPlay(){
 loop.addEventListener('click',loopPlay)
 
 let index = 0
-function prevAudio(){
-    index--
-    if(index< 0){
-        index = audios.length-1
-    }
-    audio.src = `sounds/${audios[index]}` 
-    audio.play()
-}
 
-prev.addEventListener('click',prevAudio)
-function nextAudio(){
-    index++
-    if(index > audios.length-1){
-        index = 0
-    }
-    audio.src = `sounds/${audios[index]}`
-    audio.play()
-}
-next.addEventListener('click',nextAudio)
 
 
 
 audios.forEach((value,i,arr)=>{
     
-    let html =`<li>
+    let html =`<li id="${i}">
                 <div>${i+1}.
                     <span>${value}</span> 
                 </div>
@@ -94,9 +76,10 @@ audios.forEach((value,i,arr)=>{
      list.innerHTML+= html 
       
 })
-let listChild = list.querySelectorAll('li')
+
 
 // 列表播放
+let listChild = list.querySelectorAll('li')
 let listBtn = document.querySelectorAll('li span')
 function listPlay(){
     audios.forEach((value,i)=>{
@@ -116,6 +99,48 @@ function listPlay(){
     audio.play()
 }
 listBtn.forEach(btn=>btn.addEventListener('click',listPlay))
+function prevAudio(){
+    index--
+    if(index< 0){
+        index = audios.length-1
+    }
+    audios.forEach((value,i)=>{
+        if(index == listChild[i].id){
+
+            if(listChild[i].className==''){
+                listChild[i].classList.add('active')
+            }
+        }else if( index !=listChild[i].id){
+            listChild[i].classList.remove('active')
+        }
+        
+    })
+    audio.src=`sounds/${value}`
+    audio.play()
+    console.log(index)
+}
+
+prev.addEventListener('click',prevAudio)
+function nextAudio(){
+    index++
+    if(index > audios.length-1){
+        index = 0
+    }
+    audios.forEach((value,i)=>{
+        if(index == listChild[i].id){
+            if(listChild[i].className==''){
+                listChild[i].classList.add('active')
+            }
+        }else if( index !=listChild[i].id){
+            listChild[i].classList.remove('active')
+        }
+        
+        audio.src=`sounds/${value}`
+    })
+    audio.play()
+    console.log(index)
+}
+next.addEventListener('click',nextAudio)
 // 音波
 let gain = document.querySelector('.gain')
 for(let i =0 ;i< 128; i++){
