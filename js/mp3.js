@@ -100,6 +100,7 @@ function listPlay(){
         
     })
     audio.play()
+    btn.innerHTML = '<i class="fas fa-pause">'
 }
 listBtn.forEach(btn=>btn.addEventListener('click',listPlay))
 function prevAudio(){
@@ -157,8 +158,7 @@ function dragDown(e){
     clicked =true
     beginX = e.pageX-drag.offsetLeft
     scrollmove = drag.scrollLeft
-    console.log(scrollmove)
-    drag.classList.add('active')
+    
 }
 function dragMove(e){
     if(!clicked)return
@@ -169,17 +169,17 @@ function dragMove(e){
     
 }
 drag.addEventListener('mousemove',dragMove)
-drag.addEventListener('mousedown',dragDown)
+drag.addEventListener('mousedown',dragDown,true)
 drag.addEventListener('mouseleave',function(){
     clicked = false
-    drag.classList.remove('active')
+   
 })
 drag.addEventListener('mouseup',function(){
     clicked = false
-    drag.classList.remove('active')
+    
 })
 // 圖片播放
-function imgPlay(){
+function imgPlay(e){
     
     audios.forEach((value,i)=>{
         if(this.id == i){
@@ -192,6 +192,7 @@ function imgPlay(){
     })
     audio.src = `sounds/${audios[this.id]}`
     audio.play()
+    btn.innerHTML = '<i class="fas fa-pause">'
 }
 imgs.forEach(img=>img.addEventListener('dblclick',imgPlay))
 
