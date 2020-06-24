@@ -198,7 +198,7 @@ audios.forEach((value,i,arr)=>{
     
     
 })
-audio.play()
+// audio.play()
 // 音波
 let gain = document.querySelector('.gain')
 for(let i =0 ;i< 128; i++){
