@@ -43,7 +43,10 @@ function timeupdate(){
     let mins  = Math.floor(times/60)
     let secs = times%60
     audioTime.innerText = `${mins}:${secs<10?0:''}${secs}`
-    
+    if(times ==0){
+        nextAudio()
+        btn.innerHTML = '<i class="fas fa-pause">'
+    }
 }
 audio.addEventListener('timeupdate',timeupdate)
 
@@ -118,7 +121,8 @@ function prevAudio(){
     })
     audio.src=`sounds/${audios[index]}`
     audio.play()
-    console.log(index)
+    btn.innerHTML = '<i class="fas fa-pause">'
+    
 }
 // 上一首
 prev.addEventListener('click',prevAudio)
@@ -139,7 +143,7 @@ function nextAudio(){
     })
     audio.src=`sounds/${audios[index]}`
     audio.play()
-    console.log(index)
+    btn.innerHTML = '<i class="fas fa-pause">'
 }
 // 下一首
 next.addEventListener('click',nextAudio)
@@ -154,22 +158,25 @@ function dragDown(e){
     beginX = e.pageX-drag.offsetLeft
     scrollmove = drag.scrollLeft
     console.log(scrollmove)
+    drag.classList.add('active')
 }
 function dragMove(e){
     if(!clicked)return
     let lastX = e.pageX-drag.offsetLeft
     let move = lastX-beginX
     drag.scrollLeft = scrollmove-move
-    console.log(beginX,lastX,move,scrollmove,drag.scrollLeft)
+   
     
 }
 drag.addEventListener('mousemove',dragMove)
 drag.addEventListener('mousedown',dragDown)
 drag.addEventListener('mouseleave',function(){
     clicked = false
+    drag.classList.remove('active')
 })
 drag.addEventListener('mouseup',function(){
     clicked = false
+    drag.classList.remove('active')
 })
 // 圖片播放
 function imgPlay(){
@@ -198,7 +205,7 @@ audios.forEach((value,i,arr)=>{
     
     
 })
-// audio.play()
+
 // 音波
 let gain = document.querySelector('.gain')
 for(let i =0 ;i< 128; i++){

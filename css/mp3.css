@@ -66,13 +66,19 @@
 .pic{
     width: 100%;  
    position: relative;
-   cursor: grabbing;
+   cursor: pointer;
    overflow-y: hidden;
    overflow-x:hidden ;
    height: 100%;
    white-space: nowrap;
-   
+   user-select: none;
 }
+.pic.active {
+    background: rgba(255,255,255,0.2);
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+    
+  }
 .pic img{
     width: 276px;
     height: 415px;
